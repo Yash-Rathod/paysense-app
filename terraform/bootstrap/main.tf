@@ -36,3 +36,8 @@ resource "aws_dynamodb_table" "tflock" {
     type = "S"
   }
 }
+
+module "github_oidc" {
+  source     = "../modules/iam-github-oidc"
+  github_org = "Yash-Rathod"
+}
