@@ -10,9 +10,9 @@ provider "aws" {
   profile = "paysense"
   default_tags {
     tags = {
-      Project    = "paysense"
-      ManagedBy  = "terraform"
-      Owner      = "Yash-Rathod"
+      Project   = "paysense"
+      ManagedBy = "terraform"
+      Owner     = "Yash-Rathod"
     }
   }
 }
