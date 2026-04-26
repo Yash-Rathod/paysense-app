@@ -25,6 +25,8 @@ module "karpenter" {
   enable_v1_permissions           = true
   irsa_oidc_provider_arn          = module.eks.oidc_provider_arn
   irsa_namespace_service_accounts = ["kube-system:karpenter"]
+  node_iam_role_name              = "KarpenterNodeRole-paysense-dev"
+  node_iam_role_use_name_prefix   = false
 }
 
 resource "helm_release" "karpenter" {
@@ -105,7 +107,11 @@ resource "helm_release" "argocd" {
     configs:
       cm:
         timeout.reconciliation: 30s
+      params:
+        server.insecure: true
     server:
+      extraArgs:
+        - --insecure
       service:
         type: ClusterIP
       ingress:
